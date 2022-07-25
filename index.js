@@ -3,6 +3,8 @@ const path = require("path");
 const bodyParser = require('body-parser');
 const productsRouter = require('./routes/views/products');
 const productsApiRouter = require('./routes/api/products');
+const homeRouter = require('./routes/views/home');
+const homeApiRouter = require('./routes/api/home');
 
 // app
 const app = express();
@@ -21,10 +23,14 @@ app.set("view engine", "pug");
 // routes
 app.use("/products", productsRouter);
 app.use("/api/products", productsApiRouter);
+app.use("/home", homeRouter);
+app.use("/api/home", homeApiRouter);
+
 
 // redirect
 app.get('/', function(req, res) {
-  res.redirect('/products');
+  //res.redirect('/products');
+  res.redirect("/home")
 });
 
 // server
